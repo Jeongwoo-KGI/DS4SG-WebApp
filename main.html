@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Misinformation</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="./static/style.css" type="text/css" />
+    </head>
+
+    <body data-spy = "scroll" data-target = ".site-navbar-target" data-offset = "300" data-aos-easing = "slide" data-aos-duration = "800"
+    data-aos-duration = "0" >
+        <div class = "site-wrap">
+            <div class="nav-wrapper">
+              <div class = "align-items-center">
+                <h1 class = "site-logo">
+                  <a href = "main.html">
+                    DS<span class = text-primary>4</span>SG<span class="text-primary">.</span>
+                  </a>
+                </h1>
+              </div>
+            </div>
+            <div class = "body-content" id="introduction">
+              <div id = "left-sidebar">
+                <ul class = "f1">Table of Contents
+                  <li class="f1"><a href="#mi" style="color: black;">What is misinformation?</a></li>
+                  <li class="f1"><a href="#images" style="color: black;">Detecting misinformation on images </a></li>
+                  <li class="f1"><a href="#texts" style="color: black;">Detecting misinformation in Texts (News)</a></li>
+                  <li class="f1"><a href="#nlp" style="color: black;">Hands On Activity: Before Applying NLP models. (NLP Pre-processing)</a></li>
+                  <li class="f1"><a href="#nlp2" style="color: black;">Hands On Activity 2: Now is time to start training some ML models for misinformation detection.</a></li>
+                  <li class="f1"><a href="#coding" style="color: black;">Interactive coding example (user input required)</a></li>
+                  <li class="f1"><a href="#video" style="color: black;">Video explaining in detail the algorithm behind the model</a></li>
+
+                </ul>
+              </div>
+              <div id = "intro-pic" >
+                <img src="./static/image.jpg" class="pic"/>
+              </div>
+
+              
+              
+              <div id = "content">
+                <p class = "f1 f2"> Humans vs Misinformation - an interactive website on misinformation</p>
+                <p class="f1 f3" id = "mi">  What is misinformation? </p>
+                <p class = "f4"> Before Social Networking Services, such as Facebook or Instagram, rumors took time to reach people who are physically far away unless it was aired on television or radio. The fast spreading of information was restricted to those who had power in the past. Now, the contemporary world contains many ways for both individuals and diverse organizations to have the power to make their voices heard, which has made a world where rumors spread easily. Now, misinformation can be made and spread in a matter of seconds to different continents. Some may have heard of Gwyneth Paltrow scamming her followers with health related products made by her brand, Goop.</p>
+                <img src="./static/fake1.jpg" height="400px" style="margin-left: 240px;"/>
+                <div style="background-color: rgb(227, 237, 237); position: absolute; height: 90px; width: 456px; left: 240px;">
+                  <p class="f5"> Figure 1. An image of her and her brand ‘Goop’ mentioned in a article by the Guardian. This article tells how she scammed a lot of her followers to pay for her product to put a jade egg in the vagina overnight for women’s health and she was accused to settle allegations of unscientific claims.  </p>
+                </div>
+
+                <p class="f4 f6">This provides an insight of what ‘misinformation’ means. As the name tells, according to American Psychological Association(APA) misinformation is still an information but has a wrong parts inside made to manipulate the receiver of the message into an activity or thought the source of misinformation wants. From the Ukraine and Russia war in 2022, the misinformation has been used in many ways such as to provide confidence to their soldier, make the other country the villain that has to be defeated. The Goop incident of Gwyneth Paltrow is to make her followers buy her products for their health, which is not supported by any scientific evidences. From these examples, misinformation is generated to have a certain effect on the target audience, which means that detecting misinformation and handling it is very important for contemporary human to keep their life to have a full autonomy on their decisions and to evaluate the given information critically.</p>
+                <br>
+                <p class="f4">As we look around, misinformation can be delivered in many different types. A voice, written language, image, video, and etc. Because of this nature that the information can be delivered in diverse ways, there are differences on how to tackle misinformation. From this post, we are going to cover 3 different ways of finding and treating misinformation based on the data type and how it is treated. Also, for each tactic, we are going to introduce a service that lies out there for you to check it out on your own and see for yourself that there are many organizations that are devoted to fight against misinformation. After the introduction to the 3 tactics and their models, this post will guide you through some codes on how to make a detector on your own!</p>
+                <p class = "f1 f7"> How can we detect misinformation?</p>
+                <p class = "f1 f8" id = "images"> Detecting misinformation on images</p>
+                <p class = "f4">Misinformation via photo or video has been growing. We’ve heard of things like Deepfake hurting a life of others with revenge porn and so. Because of this, Facebook has been fighting off with these misinformation by implementing a State-of-the-Art(SOTA) model called SimSearchNet++. SimSearchNet++ is an AI model that is used to identify misinformation on images. This is important for platforms that share information via photos such as Instagram. The algorithm has a distance metric which shows the images that are matched together. Even if one of the images is cropped or blurred, the model can still detect it as a match. Using OCR or optical character recognition, the model can also match the images that have texts on them. Optical character recognition is the technology of identifying the letters on images and digitally transcribing them (reading the text on an image). “The model is trained using self-supervised learning to match variations of the same image with precision” (Biswas, 2021). It quickly trains and allows the trained model to detect the difference from the reference or a.k.a. ‘original’ and the ‘reformed’ video or image. Which means that when the ‘reformation’ of information is detected, it can be put to a screening whether it is a misinformation or not. </p>
+                <img src="./static/fake2.jpg" height="400px" style="margin-left: 240px; margin-top: 30px;"/>
+                <div style="background-color: rgb(227, 237, 237); position: absolute; height: 40px; width: 576px; left: 240px;">
+                  <p class="f5"> Figure 2. Simplified diagram image on how SimSearchNet++ works. Image from Facebook  </p>
+                </div>
+                <p class = "f4 f9">SimSearchNet++ is used to match images that are similar together, so it will be really helpful for data that is shared via images but this does not apply to videos. Hence, it will not be really helpful for platforms like TikTok or YouTube which are two of the biggest platforms to share information. The model is said to be accurate at detecting variations of the same image but it can also trigger some false positives. With the OCR technology, the model is even better at detecting images that include texts as it transcribe the texts and group/match the images. If I were to use this model at detecting misinformation, I will use it on platforms that include images, it can be on a social media platform such as Instagram or on a reviewing service such as Yelp. I will not use it in a platform where it depends mainly on videos. I will also be aware that false positives is a possibility so I can allow for a “report” button that people can use to disagree when their posts are shown to be misinformation. Then, a human can check for these cases. This will leave less work for human workers than if the model does not exist. As for ethical concerns, Facebook has been using this to fight the marketplace images and now the model is running globally on new Marketplace listings to tell people whether their product is real or not. It has allowed people to have a higher precision on finding a product that they really need by searching during COVID19. So, it has built some trust from consumers who are trying to find the thing they need as well as screening mischievous products away from the customer. Also, it detects harmful content before showing it to everyday users, which allows users to choose whether they want to see the content or not. There are many ways to have the model to be implemented for social good like this and even without noticing, the effort on fighting off misinformation is already in action. </p>
+                <p class = "f1 f8" id="texts">Detecting misinformation in Texts (News)</p>
+                <p class = "f4">Detecting misinformation in texts can be done using AI models that uses a set of metrics or features that we want to focus on. These features can be about the text itself such as the sentiment of a review and it can be about other things surrounding the review text such as how many upvotes it got or how many reviews this reviewer have left before. The main idea is that we choose a set of metrics that we want to use to assess how fake or real a text is.</p>
+                <p class = "f4">We will explain the idea behind a model that wants to classify whether a text is real or fake based only on the content of the text. To do so, we will need to do some pre-processing to prepare the texts to be understood by the machine. This means we will use NLP or natural language processing. This process will include tokenizing the words, for example, and using mathematical algorithms such as Porter Stemmer Algorithm(PSA) or Lemmatization which is an algorithm that returns the words to their roots so for example will return the word “player” to “play” and then we can also use sentiment analysis to understand how positive or negative these words and we can give a score that we will use as an input to our model. This is an important input/metric as fake reviews tend to have strong feelings associated with them.</p>
+                <p class = "f4">The next step is to use a machine learning model to do the selection process. There are different models that can be used for classification or labelling with different accuracy levels. I would say although we would be able to get an idea of how suitable each model is to our data based on research, we would still find two or three suitable models that we do not entirely know which one will be the best in terms of efficiency and accuracy and this will require us to start testing and experimenting with the data we have. In part 3, we will be investigating how the code works in detail. </p>
+                <img src="./static/fake3.jpg" height="400px" width="60%" style="margin-left: 200px; margin-top: 30px;"/>
+                <div style="background-color: rgb(227, 237, 237); position: absolute; height: 90px; width: 594px; left: 200px;">
+                  <p class="f5" style="margin-top:5px">Figure 4. Narrativa’s model on detecting fake news in Espanol from Narrativa homepage. It reads the text headline and the body and then returns a score on how likely it is going to be a fake news. And from that, if the score is high, it will label the texts as ‘Fake’.</p>
+                </div>
+                <p class = "f4" style="margin-top: 110px;">One example of the use of Natural Language Processing(NLP) and machine learning to detect misinformation in real life is Narrativa which is actually available to everyone to use. Their goal is to detect misinformation mainly on social networks such as Twitter and Facebook.</p>
+                <p class="f1 f7" id="nlp">Hands On Activity: Before Applying NLP models. (NLP Pre-processing)</p>
+                <p class = "f4"> For this section, most of the codes and ideas comes from Matt Clarke’s blog post(2021). And before we start exploring on how the NLP models and techniques are applied, let’s take a look on how we need to pre-process the data so that we can make our own handy-dandy detector afterwards using TfidVectorizer to vectorize the text to vectors and other ML classification algorithms. The dataset will be Fake Reviews Dataset (2021) that contains 20k fake reviews and 20k real product reviews. </p>
+                <p class = "f4"> Before we start, it is important on knowing how NLP in general works in the AI field. The main steps are explained from section 2-3, which is that we need to make texts into a form where computer can calculate and then do a classification after the model’s computation is done. The classification will depend on the label of the data. For our case, the data will be labeled as misinformation(fake-review) and real information(real-review). So, in our case, the classification model will differentiate the review(texts), whether it is real or fake, depending on the text vectors of reviews and other features(columns on data) that has been gathered together with the review texts such as length, sentiment, coherence, and etc. But for the sake of the experience, let’s just stick with the text as a independent variable for classification. </p>
+                <p class = "f4"> Let’s give it a start!</p>
+                <div style="background-color: rgb(227, 237, 237); position: absolute; height: 900px; width: 576px; left: 240px;">
+                  <p style="font-size: small; font-weight: lighter; color: gray; margin-left: 5px;">#importing necessary packages</p>
+                  <p style="font-size: small; font-weight: lighter; color: gray; margin-top: -5px; margin-left: 5px;">#non AI libraries</p>
+                  <pre style="margin-left: -170px;">
+                    <span style="color: blue;">import</span> time
+                    <span style="color: blue;">import</span> pandas <span style="color: blue;">as</span> pd
+                    <span style="color: blue;">import</span> numpy <span style="color: blue;">as</span> np
+                    <span style="color: blue;">import</span> nltk
+                    <span style="color: blue;">from</span> nltk.corpus <span style="color: blue;">import</span> stopwords
+                    <span style="color: blue;">from</span> sklearn.pipeline <span style="color: blue;">import</span> Pipeline
+                    <span style="color: blue;">from</span> sklearn.model_selection <span style="color: blue;">import</span> train_test_split
+                    <span style="color: blue;">from</span> sklearn.model_selection <span style="color: blue;">import</span> cross_val_score
+                    <span style="color: blue;">from</span> sklearn.metrics <span style="color: blue;">import</span> accuracy_score
+                    <span style="color: blue;">from</span> sklearn.metrics <span style="color: blue;">import</span> f1_score
+                    <span style="color: blue;">from</span> sklearn.metrics <span style="color: blue;">import</span> roc_auc_score
+                    <span style="color: blue;">from</span> sklearn.metrics <span style="color: blue;">import</span> precision_score
+                    <span style="color: blue;">from</span> sklearn.metrics <span style="color: blue;">import</span> recall_score
+                    <span style="color: blue;">from</span> sklearn.metrics <span style="color: blue;">import</span> classification_report</pre>
+
+                    <br>
+                    <p style="font-size: small; font-weight: lighter; color: gray; margin-left: 5px;">## Vectorization library</p>
+                    <pre style="margin-left: -190px;">
+                      <span style="color: blue;">from</span> nltk.stem.porter <span style="color: blue;">import</span> PorterStemmer
+                      <span style="color: blue;">from</span> sklearn.feature_extraction.text <span style="color: blue;">import</span> TfidfVectorizer
+                    </pre>
+                    <p style="font-size: small; font-weight: lighter; color: gray; margin-left: 5px;">## Classification ML libraries</p>
+                    <p style="font-size: small; font-weight: lighter; color: gray; margin-left: 5px;">### This will be used after pre-processing</p>
+                    <pre style="margin-left: -190px;">
+                      <span style="color: blue;">from</span> sklearn.svm <span style="color: blue;">import</span> LinearSVC
+                      <span style="color: blue;">from</span> xgboost <span style="color: blue;">import</span> XGBClassifier
+                      <span style="color: blue;">from</span> lightgbm <span style="color: blue;">import</span> LGBMClassifier
+                      <span style="color: blue;">from</span> catboost <span style="color: blue;">import</span> CatBoostClassifier
+                      <span style="color: blue;">from</span> sklearn.neighbors <span style="color: blue;">import</span> KNeighborsClassifier
+                      <span style="color: blue;">from</span> sklearn.tree <span style="color: blue;">import</span> DecisionTreeClassifier
+                      <span style="color: blue;">from</span> sklearn.tree <span style="color: blue;">import</span> ExtraTreeClassifier
+                      <span style="color: blue;">from</span> sklearn.linear_model <span style="color: blue;">import</span>RidgeClassifier
+                      <span style="color: blue;">from</span> sklearn.linear_model <span style="color: blue;">import</span> SGDClassifier
+                      <span style="color: blue;">from</span> sklearn.ensemble <span style="color: blue;">import</span> RandomForestClassifier
+                      <span style="color: blue;">from</span> sklearn.ensemble <span style="color: blue;">import</span> AdaBoostClassifier
+                      <span style="color: blue;">from</span> sklearn.ensemble <span style="color: blue;">import</span> BaggingClassifier
+                      <span style="color: blue;">from</span> sklearn.naive_bayes <span style="color: blue;">import</span> BernoulliNB
+                      <span style="color: blue;">from</span>sklearn.naive_bayes <span style="color: blue;">import</span> MultinomialNB
+                    </pre>
+                    <p style="font-size: small; font-weight: lighter; color: gray; margin-left: 5px;"># set Pandas option</p>
+                    <pre style="margin-left: -190px;">
+                      pd.set_option(<span style="color: green;">'max_colwidth'</span>, <span style="color:darkmagenta ;">None</span>)
+                    </pre>
+                  </div>
+                  <p class = "f4 f10">And now we load the data and see how the data looks like</p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 100px; width: 576px; left: 240px;">
+                    <p style="font-size: small; font-weight: lighter; color: gray; margin-left: 5px;"># loading data after downloading from the given link</p>
+                    <pre style="margin-left: -190px;">
+                      df<span style="color: darkorange;">=</span>pd.read_csv(<span style="color: green;">'fake reviews dataset.csv'</span>)
+                      df.head()
+                    </pre>
+
+                  </div>
+                  <p class="f4 f11">
+                    For the computer to calculate the given data, we need it to have the data treated with some magic. This magic will be replacing ‘enter(\n)’ to a single space and creating a column to say that row of data is fake(1) or real(0) using integers because they are currently in text that specifies the data to be ‘fake’ or ‘real’. By changing the text of ‘fake’ and ‘real’ into 1 and 0, computer will be able to have easier time classifying the given data during training, and testing. 
+                  </p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 100px; width: 576px; left: 240px;">
+                    <p style="font-size: small; font-weight: lighter; color: gray; margin-left: 5px;"># from enter to space</p>
+                    <pre style="margin-left: -190px; margin-top: -11px;">
+                      df[<span style="color: green;">'text'</span>]<span style="color: darkorange;">=</span>df[<span style="color: green;">'text'</span>].<span style="color: green;">str</span>.replace(<span style="color: green;">'\n</span>, <span style="color: green;">' '</span>)
+                    </pre>
+                    <p style="font-size: small; font-weight: lighter; color: gray; margin-left: 5px; margin-top: -30px;"># from 'fake' and 'real' to 1 and 0</p>
+                    <pre style="margin-left: -190px; margin-top: -10px;">
+                      df[<span style="color: green;">'target'</span>]<span style="color: darkorange;">=</span>np.where(df[<span style="color: green;">'label'</span>]==<span style="color: green;">'CG'</span>, <span style="color: darkmagenta;">'1'</span>, <span style="color: darkmagenta;">0</span>)
+                    </pre>
+
+                  </div>
+                  <p class = "f4 f12">
+                    To use PSA, we need to have a bag of words based model, which is the first part of NLP preprocessing and this will make the punctuations into words so that everything can be made into a vector afterwards.
+                  </p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 500px; width: 576px; left: 240px;">
+                    <pre style="margin-left: -190px;">
+                      <span style="color: blue;">def</span> <span style="color: darkmagenta;">punctuation_to_features</span>(df, column):
+                        <span style="color: green;">"""Identify punctuation within a column and convert to a text 
+                          representation.</span>
+                        <span style="color: green;">Args:</span>
+                            <span style="color: green;">df (object): Pandas dataframe.</span>
+                            <span style="color: green;">column (string): Name of column containing text.</span>
+                        <span style="color: green;">Returns:</span>
+                            <span style="color: green;">df[column]: Original column with punctuation converted to 
+                              text,
+                                        i.e. "Wow! > "Wow exclamation"</span>
+                        <br>
+                        df[column]<span style="color: darkorange;">=</span>df[column].replace(<span style="color: green;"> '!'</span>, <span style="color: green;"> 'exclamation'</span>)
+                        df[column]<span style="color: darkorange;">=</span>df[column].replace(<span style="color: green;"> '?'</span>, <span style="color: green;"> 'question'</span>)
+                        df[column]<span style="color: darkorange;">=</span>df[column].replace(<span style="color: green;"> '\''</span>, <span style="color: green;"> 'quotation'</span>)
+                        df[column]<span style="color: darkorange;">=</span>df[column].replace(<span style="color: green;"> '\"'</span>, <span style="color: green;"> 'quotation'</span>)
+                        <br>
+                        <span style="color: blue;">return </span> df[column]
+                        <br>
+                      df[<span style="color: green;">'text'</span>]<span style="color: darkorange;">=</span>punctuation_to_features(df, <span style="color: green;">'text'</span>)
+                    </pre>
+                  </div>
+                  <p class = "f4 f13">And from this text column, we need to make it tokenized which makes the string to become a list that contains words. </p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 400px; width: 620px; left: 240px;">
+                    <pre style="margin-left: -190px;">
+                      nltk.download(<span style="color: green;">'punkt'</span>)
+
+                      <span style="color: blue;">def </span> <span style="color: darkmagenta;">tokenize</span>(column):
+                        <span style="color: green;">"""Tokenizes a Pandas dataframe column and returns a list of tokens.
+    
+                        Args:
+                            column: Pandas dataframe column (i.e. df['text']).
+    
+                        Returns:
+                            tokens (list): Tokenized list, i.e. [Donald, Trump, tweets]
+    
+                        """</span>
+    
+                        tokens<span style="color: darkorange;">=</span>nltk.word_tokenize(column)
+                        <span style="color: blue;">return</span> [w <span style="color: blue;">for</span> w <span style="color: blue;">in</span>tokens <span style="color: blue;">if</span> w.isalpha()]
+
+                      df[<span style="color: green;">'tokenized'</span><span style="color: darkorange;">=</span>df.<span style="color: green;">apply</span>(<span style="color: blue;">lambda</span> x: tokenize(x[<span style="color: blue;">'text'</span>]), axis=<span style="color: darkmagenta;">1</span>)
+                      df[<span style="color: darkmagenta;">0:2</span>]
+                    </pre>
+                  </div>
+                  <p class = "f4" style="margin-top: 500px;">Then the result that you will see is:</p>
+                  <img src="./static/fake4.jpg" height="400px" width="60%" style="margin-left: 240px; margin-top: 20px;"/>
+                  <p class = "f4">And before we progress to make vectors, we have to understand that in natural language, there are many words that are just sitting there with not much of a meaning. And removing these high-frequency words that has less meanings can help the model to speed up. For every language, this word set is different. So, by downloading the NLTK’s stop-words library in English setting, we can remove those words from the tokenized list.</p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 400px; width: 770px; left: 150px;">
+                    <pre style="margin-left: -190px;">
+                      nltk.download(<span style="color: green;">'stopwords'</span>)
+                      <span style="color: blue;">def</span> <span style="color: darkmagenta;">remove_stopwords</span>(tokenized_column):
+                        <span style="color: green;">"""Return a list of tokens with English stopwords removed. 
+    
+                        Args:
+                            column: Pandas dataframe column of tokenized data from tokenize()
+    
+                        Returns:
+                            tokens (list): Tokenized list with stopwords removed.
+    
+                        """</span>
+
+                        stops <span style="color: darkorange;">=</span> <span style="color: green;">set</span>(stopwords.words(<span style="color: green;">"english"</span>))
+                        <span style="color: blue;">return</span> [word <span style="color: blue;">for</span> word <span style="color: blue;">in</span> tokenized_column <span style="color: blue;">if</span> <span style="color: blue;">not</span> word <span style="color: blue;">in</span> stops]
+
+                      #remove stopwords
+                      df[<span style="color: green;">'stopwords_removed'</span>] <span style="color: darkorange;">=</span> df.<span style="color: green;">apply</span>(<span style="color: blue;">lambda</span> x: remove_stopwords(x[<span style="color: green;">'tokenized'</span>]), axis=<span style="color: darkmagenta;">1</span>)
+                    </pre>
+                  </div>
+                  <p class = "f4" style="margin-top: 450px;">
+                    Now is a time to use Porter Stemming technique to make words into a tree form which converts the words into a simplest root form. So, sleep, slept, sleeping, sleeps, will all become ‘sleep’ after the technique. So, it can be turned into a vector of a single word and see how that appears in the parts of the sentence. It does make the sentence look weird when there is not enough data when the AI regenerates a sample, such as ‘I love sleep’ is going to be the outcome rather than ‘I love sleeping’
+                  </p>
+
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 400px; width: 788px; left: 150px;">
+                    <pre style="margin-left:-190px ;">
+                      <span style="color: blue;">def</span> <span style="color: darkmagenta;">apply_stemming</span>(tokenized_column):
+                        <span style="color: green;">"""Return a list of tokens with Porter stemming applied.
+    
+                        Args:
+                            column: Pandas dataframe column of tokenized data with stopwords removed.
+    
+                        Returns:
+                            tokens (list): Tokenized list with words Porter stemmed.
+    
+                        """</span>
+    
+                        stemmer <span style="color: darkorange;">=</span> PorterStemmer() 
+                        <span style="color: blue;">return</span> [stemmer.stem(word).lower() <span style="color: blue;">for</span> word <span style="color: blue;">in</span> tokenized_column]
+                      df[<span style="color: green;">'porter_stemmed'</span>] <span style="color: darkorange;">=</span> df.<span style="color: green;">apply</span>(<span style="color: blue;">lambda</span> x: apply_stemming(x[<span style="color: green;">'stopwords_removed'</span>]), axis=<span style="color: darkmagenta;">1</span>)
+                    </pre>
+                  </div>
+                  <p class="f4" style="margin-top: 450px;">And then we rejoin the words into string from the tokenized list.</p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 150px; width: 700px; left: 200px;">
+                    <pre style="margin-left: -190px;">
+                      <span style="color: blue;">def</span> <span style="color: darkmagenta;">rejoin_words</span>(tokenized_column):
+                      <span style="color: blue;">return</span> ( <span style="color: green;">" "</span>.join(tokenized_column))
+                      df[<span style="color: green;">'all_text'</span>] <span style="color: darkorange;">=</span> df.<span style="color: green;">apply</span>(<span style="color: blue;">lambda</span> x: rejoin_words(x[<span style="color: green;">'porter_stemmed'</span>]), axis=<span style="color: darkmagenta;">1</span>)
+                      <span style="font-size: smaller; color: gray;">#and what we will see is</span>
+                      df[[<span style="color: green;">'all_text'</span>]].head()
+                    </pre>
+                  </div>
+                  <img src="./static/fake5.jpg" height="300px" width="50%" style="margin-left: 240px; margin-top: 200px;"/>
+                  <p class = "f1 f3" id="nlp2">Hands On Activity 2: Now is time to start training some ML models for misinformation detection.</p>
+                  <p class = "f4">Before we start training the classification models, we need to split the existing dataset into two parts at least so that we can test the model afterwards. And to do so, it is important that we randomly select the data on what to pick or do a bootstrapping, k-folds, or any other methods to make sure that the dataset for training and testing is not fundamentally different. Here, we will just use what python has to offer and has been mostly used from CS156 class of Minerva University that I am used to the most.</p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 130px; width: 900px; left: 70px;">
+                    <pre style="margin-left: -190px;">
+                      X <span style="color: darkorange;">=</span> df[<span style="color: green;">'all_text'</span>] <span style="font-size: smaller;color: gray;">#the input</span>
+                      y <span style="color: darkorange;">=</span> df[<span style="color: green;">'target'</span>] <span style="font-size: smaller;color: gray;">#classification label</span>
+                      <span style="font-size: smaller; color: gray;">#split the data into test and training (3:7 ratio)</span>
+                      X_train, X_test, y_train, y_test <span style="color: darkorange;">=</span> train_test_split(X, y, test_size=<span style="color: darkmagenta;">0.3</span>, random_state=<span style="color: darkmagenta;">1</span>, shuffle=<span style="color: darkmagenta;">True</span>)
+                    </pre>
+                  </div>
+                  <p class = "f4" style="margin-top: 180px;">We started with 40k data in total. Ratio of splitting data into two is all up to you. But is usually 4:6, 3:7, or 2:8 depending on how much data we have. </p>
+                  <p class = "f4">As we have test and training, we can now start to train the classifiers and compare who is the best one to use for this dataset. Also, we need to check whether the best one is actually the best by not only checking high accuracy that goes over the threshold we want but also checking precision, f1 score, and etc. From what we have imported we can test out these.</p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 390px; width: 700px; left: 120px;">
+                    <pre style="margin-left: -190px;">
+                      <span style="font-size: smaller;color: gray;">#classifiers dictionary to contain what classifier has what performance.</span> 
+                      classifiers <span style="color: darkorange;">=</span> {}
+                      classifiers.update({<span style="color: green;">"XGBClassifier"</span>: XGBClassifier(eval_metric<span style="color: darkorange;">=</span><span style="color: green;">'logloss</span>,
+                                                                        objective<span style="color: darkorange;">=</span><span style="color: green;">'binary:logistic'</span>,
+                                                                        )})
+                      classifiers.update({<span style="color: green;">"CatBoostClassifier"</span>: CatBoostClassifier(silent=<span style="color: darkmagenta;">True</span>)})
+                      classifiers.update({<span style="color: green;">"LinearSVC"</span>: LinearSVC()})
+                      classifiers.update({<span style="color: green;">"MultinomialNB"</span>: MultinomialNB()})
+                      classifiers.update({<span style="color: green;">"LGBMClassifier"</span>: LGBMClassifier()})
+                      classifiers.update({<span style="color: green;">"RandomForestClassifier"</span>: RandomForestClassifier()})
+                      classifiers.update({<span style="color: green;">"DecisionTreeClassifier"</span>: DecisionTreeClassifier()})
+                      classifiers.update({<span style="color: green;">"ExtraTreeClassifier"</span>: ExtraTreeClassifier()})
+                      classifiers.update({<span style="color: green;">"AdaBoostClassifier"</span>: AdaBoostClassifier()})
+                      classifiers.update({<span style="color: green;">""KNeighborsClassifier"</span>: KNeighborsClassifier()})
+                      classifiers.update({<span style="color: green;">"RidgeClassifier"</span>: RidgeClassifier()})
+                      classifiers.update({<span style="color: green;">"SGDClassifier"</span>: SGDClassifier()})
+                      classifiers.update({<span style="color: green;">"BaggingClassifier"</span>: BaggingClassifier()})
+                      classifiers.update({<span style="color: green;">"BernoulliNB"</span>: BernoulliNB()})
+                    </pre>
+                  </div>
+                  <p class = "f4" style="margin-top: 430px;">After training all these (which takes a while and at most 10hrs for each with my laptop) with your local device, using pandas we can check what are the good model and how well they perform on the given test data.</p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 390px; width: 720px; left: 120px;">
+                    <pre style="margin-left: -190px;">
+                      df_models = pd.DataFrame(columns=[<span style="color: green;">'model'</span>, <span style="color: green;">'run_time'</span>, <span style="color: green;">'roc_auc'</span>, <span style="color: green;">'roc_auc_std'</span>])
+
+                      <span style="color: blue;">for</span> key <span style="color: blue;">in</span> classifiers:
+    
+                        start_time <span style="color: darkorange;">=</span> time.time()
+                        pipeline <span style="color: darkorange;">=</span> Pipeline([(<span style="color: green;">"tfidf"</span>, TfidfVectorizer()), (<span style="color: green;">"clf"</span>, classifiers[key])])
+                        cv <span style="color: darkorange;">=</span> cross_val_score(pipeline, X, y, cv=<span style="color: darkmagenta;">5</span>, scoring=<span style="color: green;">'roc_auc'</span>)
+
+                        row <span style="color: darkorange;">=</span> {<span style="color: green;">'model'</span>: key,
+                              <span style="color: green;">'run_time'</span>: <span style="color: green;">format</span>(<span style="color: green;">round</span>((time.time() - start_time)<span style="color: darkmagenta;">/60,2</span>)),
+                              <span style="color: green;">'roc_auc'</span>: cv.mean(),
+                              <span style="color: green;">'roc_auc_std'</span>: cv.std(),
+                        }
+    
+                        df_models <span style="color: darkorange;">=</span> df_models.append(row, ignore_index=<span style="color: darkmagenta;">True</span>)
+    
+                      df_models <span style="color: darkorange;">=</span> df_models.sort_values(by=<span style="color: green;">'roc_auc'</span>, ascending=<span style="color: darkmagenta;">False</span>)
+                      df_models
+                    </pre>
+                  </div>
+                  <img src="./static/fake6.jpg" height="400px" width="50%" style="margin-left: 240px; margin-top: 400px;"/>
+                  <p class = "f4">From this we see that SGD has done the best job. So, we choose to see the performance in depth</p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 350px; width: 520px; left: 220px;">
+                    <pre style="margin-left: -190px;">
+                      bundled_pipeline <span style="color: darkorange;">=</span> Pipeline([(<span style="color: green;">"tfidf"</span>, TfidfVectorizer()), 
+                                                   (<span style="color: green;">"clf"</span>, SGDClassifier())  
+                                                  ])
+                      bundled_pipeline.fit(X_train, y_train)
+                      y_pred <span style="color: darkorange;">=</span> bundled_pipeline.predict(X_test)
+                      accuracy_score <span style="color: darkorange;">=</span> accuracy_score(y_test, y_pred)
+                      precision_score <span style="color: darkorange;">=</span> precision_score(y_test, y_pred)
+                      recall_score <span style="color: darkorange;">=</span> recall_score(y_test, y_pred)
+                      roc_auc_score <span style="color: darkorange;">=</span> roc_auc_score(y_test, y_pred)
+
+                      print(<span style="color: green;">'Accuracy:'</span>, accuracy_score)
+                      print(<span style="color: green;">'Precision:'</span>, precision_score)
+                      print(<span style="color: green;">'Recall:'</span>, recall_score)
+                      print(<span style="color: green;">'ROC/AUC:'</span>, roc_auc_score)
+                    </pre>
+                  </div>
+                  <p class = "f4" style="margin-top: 400px;">Result:</p>
+                  <div style="background-color: rgb(227, 237, 237); position: absolute; height: 100px; width: 400px; left: 275px;">
+                    <pre style="margin-left: -190px;">
+                      Accuracy: 0.8694971145919208
+                      Precision: 0.8909774436090225
+                      Recall: 0.8465660009741841
+                      ROC/AUC: 0.8698581135334829
+                    </pre>
+                  </div>
+                  <p class = "f1 f3" style="margin-top: 150px;">Discussions from this activity and the result of the codes</p>
+                  <p class = "f4">There could have been different data preprocessing techniques, different vectorizers, different classifiers, and different hyperparameters for this process. Also, the performance of each models may depend on the dataset that we have, so we don’t know whether SGD classifier will always the one to go. We just need to check things out!</p>
+                  <p class = "f4">Meanwhile, if the accuracy of 86.9% is below the ideal level that you need for your service or whatsoever, more delicate process can be used to contain other hyperparameter than just text as we did here, or could use different model or vectorization. The best way to go is to understand the dataset in depth and from the fundamental, we build a classifier rather than just forcing a model to learn and do a classification as we did. If we get to tailor the model to meet the specific details of the data, the accuracy and the other performance score will rise maybe even with the simplest and oldest technique available for the job.</p>
+                  <p class = "f4">This means that when you are thinking of doing a misinformation detector, or any other type of AI making, knowing the field and the data itself as well as the goal for the project will definitely help a lot and have a differentiating power compared to those that exists out there in the market. Hope you have enjoyed the blog post on what are the different branches of misinformation detection exists depending on our perspectives as well as going through a hands on activity of making your own misinformation detector.</p>
+                  <p class = "f1 f3" id="coding">Interactive coding example (user input required)</p>
+                  <iframe frameborder="0" width="80%" height="500px" style="margin-left: 110px;" src="https://replit.com/@albinsiriniqi05/GlossyProperBots?embed=true"></iframe>
+                  <p class = "f1 f3" id = "video">Video explaining in detail the algorithm behind the model</p>
+                  <iframe frameborder="0" width="80%" height="500px" style="margin-left: 110px;" src="https://www.youtube.com/embed/DQPCXvxYKj0"></iframe>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
